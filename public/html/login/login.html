@@ -1,0 +1,24 @@
+<div class="ngdialog-message">
+    <form role="form">
+        <h2 class="signCol">Learn to <span>KISSLANG</span> interactively, <span class>for free.</span></h2>
+        <hr class="line-gray"/>
+
+        <div class="form-group">
+            <input type="email" name="email" id="email" ng-model="login.id" class="form-control input-lg" placeholder="Email Address" tabindex="4" autofocus>
+        </div>
+        <div class="form-group">
+            <input type="password" name="password" id="password" ng-model="login.pw" class="form-control input-lg" placeholder="Password" tabindex="5">
+        </div>
+        <hr class="colorgraph">
+        <div class="row" style="margin-bottom: 5%;">
+            <div class="col-xs-12"><button class="btn btn-sns btn-block btn-lg" ng-click="doLogin();" tabindex="8">Login</button></div>
+        </div>
+    </form>
+    <div class="ngdialog-buttons mt">
+        <p class="pStyle">Other login with
+            <button class="btn btn-lg btn-social-FBox" ng-click="facebookLogin()"><i class="facebookIcon-color entypo-facebook"></i></button>
+            <button class="btn btn-lg btn-social-GBox" ng-click="googleLogin()"><i class="gplusIcon-color entypo-gplus"></i></button> &nbsp;&nbsp; &#124; &nbsp;&nbsp;
+            <a class="forgotPW" href="#">Forgot your password?</a>
+        </p>
+    </div>
+</div>

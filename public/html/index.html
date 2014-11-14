@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html ng-app="johayo">
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="author" content="DongJun Kwon" />
+    <meta http-equiv=”X-UA-Compatible” content=”requiresActiveX=true” />
+    <title>Johayo Shop</title>
+
+    <!-- css -->
+    <link rel="stylesheet" href="/lib/css/bootstrap/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/lib/css/awesome/css/font-awesome.css"/>
+    <link rel="stylesheet" href="/lib/css/angular/ngDialog/ngDialog.min.css">
+    <link rel="stylesheet" href="/lib/css/angular/ngDialog/ngDialog-theme-default.min.css" />
+    <link rel="stylesheet" href="/lib/css/angular/ngDialog/ngDialog-theme-flat.css" />
+    <link rel="stylesheet" href="/css/ngDialog.css"/>
+    <link rel="stylesheet" href="/css/johayo.css"/>
+    <!--[if lt IE 10]><link rel="stylesheet" href="/css/ie9DownNav.css"/><![endif]-->
+
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
+    <![endif]-->
+
+    <!--[if lt IE 7]>
+    <script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE7.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE8.js"></script>
+    <![endif]-->
+
+    <!-- javascript -->
+    <!-- lib -->
+    <script src="/lib/js/jquery/jquery-1.11.1.min.js"></script>
+    <script src="/lib/js/angular/angular.min.js"></script>
+    <script src="/lib/js/angular/angular-route.min.js"></script>
+    <script src="/lib/js/angular/angular-resource.min.js"></script>
+    <script src="/lib/js/angular/ngDialog/ngDialog.min.js"></script>
+    <script src="/lib/js/bootstrap/bootstrap.min.js"></script>
+
+    <!-- app -->
+    <script src="/js/app.js"></script>
+
+    <!-- controller -->
+    <script src="/js/controller/indexController.js"></script>
+    <script src="/js/controller/mainController.js"></script>
+    <script src="/js/controller/itemController.js"></script>
+    <script src="/js/controller/loginController.js"></script>
+    <script src="/js/controller/signUpController.js"></script>
+
+    <!-- service -->
+    <script src="/js/service/loginService.js"></script>
+    <script src="/js/service/signUpService.js"></script>
+
+    <!-- directive -->
+    <script src="/js/directive/commonDirective.js"></script>
+
+    <!-- config -->
+    <script src="/js/config/errorQueue.js"></script>
+    <script src="/js/config/interceptor.js"></script>
+    <script src="/js/config/loginRetryQueue.js"></script>
+</head>
+<body ng-controller="indexController">
+    <header header-menu-scrolly scroll-size="scrollSize">
+        <nav>
+            <h1><a href="/" class="logo" >LOGO</a></h1>
+            <ul class="menu">
+                <li><a href="/">Home</a></li>
+                <li class="active"><a ng-href="/#/items">menu1</a></li>
+                <li><a href="#menu1">menu2</a></li>
+                <li><a href="#menu1">menu3</a></li>
+                <li><a href="#menu1">menu4</a></li>
+            </ul>
+            <!-- 로그인창 -->
+            <ul class="right" ng-if="!loginInfo._id">
+                <li><a ng-click="openLogin()" style="cursor: pointer">Login</a></li>
+                <li><a ng-click="openSignUp()" style="cursor: pointer">SignUp</a></li>
+            </ul>
+            <div class="right"  ng-if="!!loginInfo._id">
+                {{loginInfo.firstName}}
+                {{loginInfo.lastName}}
+            </div>
+        </nav>
+    </header>
+    <nav id="subMenu" class="subMenu" ng-show="isSub">
+        <ul>
+            <li><a href="#home" >Home</a></li>
+            <li><a href="#home" >Home</a></li>
+            <li><a href="#home" >Home</a></li>
+            <li><a href="#home" >Home</a></li>
+        </ul>
+    </nav>
+    <section>
+        <div class="spinner" ng-show="loading">
+            <div class="spinner-container container1">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+            </div>
+            <div class="spinner-container container2">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+            </div>
+            <div class="spinner-container container3">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+            </div>
+        </div>
+        <ng-view ng-hide="loading"></ng-view>
+    </section>
+</body>
+</html>

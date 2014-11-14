@@ -1,0 +1,23 @@
+/**
+ * Created by 동준 on 2014-10-13.
+ */
+
+/* 모달 바탕화면 색 */
+.ngdialog.ngdialog-theme-custom .ngdialog-overlay {
+    /*background: rgba(255,255,255,.5);*/
+}
+
+/* 모달 바탕화면 색 */
+.ngdialog.ngdialog-theme-flat .ngdialog-overlay {
+    /*background: rgba(255, 255, 255, 0.4);*/
+}
+
+/* 모달 메인 back 색 */
+.ngdialog.ngdialog-theme-custom .ngdialog-content {
+    background: rgba(255,255,255,.9);
+}
+
+/* 모달 순서 */
+.ngdialog.ngdialog-theme-custom{
+    z-index: 5;
+}

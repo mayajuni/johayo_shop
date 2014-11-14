@@ -1,0 +1,76 @@
+<div class="ngdialog-message">
+    <form name="signUp" id="signUp" action="javascript:console.log();">
+        <h2 class="signCol">Sign Up<br> <small>It's free and always will be.</small></h2>
+        <hr class="line-gray"/>
+        <div class="row signContents">
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <div class="form-group" ng-class="{ 'has-error' : signUp.first_name.$invalid && !signUp.first_name.$pristine ,
+                'has-success': !signUp.first_name.$error.required }">
+                    <label>First Name</label>
+                    <input type="text" name="first_name" id="first_name" ng-model="user.firstName" ng-readonly="external.name.givenName != null"
+                           class="form-control input-lg" placeholder="First Name" tabindex="1" required>
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <div class="form-group" ng-class="{ 'has-error' : signUp.last_name.$invalid && !signUp.last_name.$pristine,
+                'has-success': !signUp.first_name.$error.required }">
+                    <label>Last Name</label>
+                    <input type="text" name="last_name" id="last_name" ng-model="user.lastName" ng-readonly="external.name.familyName != null"
+                           class="form-control input-lg" placeholder="Last Name" tabindex="2" required>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group" ng-class="{ 'has-error' : (signUp.email.$invalid && !signUp.email.$pristine) || !onlyOneEmail,
+                 'has-success': !(signUp.email.$invalid && !signUp.email.$pristine) && onlyOneEmail && !signUp.email.$error.required }">
+                    <label>E-mail</label>
+                    <input type="email" name="email" ng-model="user.email" ng-blur="checkEmail(false)"  ng-readonly="externalEmail"
+                           placeholder="E-mail" class="form-control input-lg" tabindex="4" required>
+                    <p ng-show="resultCheck != ''" class="help-block emailsize">{{resultCheck}}</p>
+                    <p class="subInputText" ng-show="signUp.email.$invalid && !signUp.email.$pristine" class="help-block">Enter a valid email.</p>
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <div class="form-group" ng-class="{ 'has-error' : signUp.password.$invalid && !signUp.password.$pristine,
+                 'has-success': !(signUp.password.$invalid && !signUp.password.$pristine) && !signUp.password.$error.required}">
+                    <label>Password</label>
+                    <!--  ng-pattern="/(?=.*[A-z])(?=.*[A-Z])(?=.*[^a-zA-Z])/" -->
+                    <input type="password" name="password" id="password" ng-model="user.pw"
+                           ng-minlength="8" ng-maxlength="20" ng-pattern="/(?=.*[A-z])(?=.*[^a-zA-Z])/"
+                           class="form-control input-lg" placeholder="Password" tabindex="5" required>
+                    <span ng-show="!signUp.password.$error.required && (signUp.password.$error.minlength || signUp.password.$error.maxlength) && signUp.password.$dirty"><p class="subInputText">Passwords must be between 8 and 20 characters.</p></span>
+                    <span ng-show="!signUp.password.$error.required && !signUp.password.$error.minlength && !signUp.password.$error.maxlength && signUp.password.$error.pattern && signUp.password.$dirty"><p class="subInputText">Must contain one lower &amp; uppercase letter, and one non-alpha character (a number or a symbol.)</p></span>
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <div class="form-group" ng-class="{ 'has-error' : !signUp.pwConfirm.$error.required  && !signUp.password.$error.required && user.pwConfirm != user.pw,
+                 'has-success': !signUp.pwConfirm.$error.required  && !signUp.password.$error.required && user.pwConfirm == user.pw}">
+                    <label>Confirm Password</label>
+                    <input type="password" name="pwConfirm" id="pwConfirm" ng-model="user.pwConfirm"
+                           class="form-control input-lg" placeholder="Confirm Password" tabindex="6" required>
+                    <span ng-show="!signUp.pwConfirm.$error.required  && !signUp.password.$error.required && user.pwConfirm != user.pw"><p class="subInputText">The password and confirmation you typed do not match.</p></span>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div>
+                    <label>Gender</label>
+                </div>
+                <span class="genderText">
+                    <input type="radio" name="gender" id="genderMale" ng-model="user.gender" value="male" ng-disabled="external.gender != null">
+                    Male
+                </span>
+                <span class="genderText" style="float: right; margin-right: 35%; margin-bottom: 5%;">
+                    <input type="radio" name="gender" id="genderFemale" ng-model="user.gender" value="female" ng-disabled="external.gender != null">
+                    Female
+                </span>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div>
+                    <label>Gender</label>
+                </div>
+            </div>
+        </div>
+            <div class="col-xs-12">
+                <button class="btn btn-sns btn-block btn-lg" ng-click="goSignUp();" ng-disabled="!signUp.$valid || !(user.gender == 'male' || user.gender=='female') || user.pwConfirm != user.pw || !onlyOneEmail" tabindex="8">Sign Up</button>
+            </div>
+    </form>
+</div>

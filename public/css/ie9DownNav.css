@@ -1,0 +1,9 @@
+header ul > li:hover, header ul > li > a:hover, header ul .active, header ul .active a {
+    background-color: #CC3D3D;
+    color: #EFEEE7;
+}
+
+.subMenu ul > li:hover, .subMenu ul > li > a:hover, .subMenu ul .active, .subMenu ul .active a {
+    background-color: #EFEEE7;
+    color: #CC3D3D;
+}
