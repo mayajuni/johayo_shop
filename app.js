@@ -13,14 +13,14 @@ var colors = require('colors');
 colors.setTheme({error: 'red'});
 
 /* config */
-var config = require('./config/config');
+/*var config = require('./config/config');*/
 
 /* util */
 var loginCheck = require('./util/loginCheck');
 
 /* routes */
-var login = require('./routes/login');
-var sign = require('./routes/signUp');
+/*var login = require('./routes/login');
+var sign = require('./routes/signUp');*/
 
 var app = express();
 
@@ -31,7 +31,7 @@ app.use(domain);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(session({
+/*app.use(session({
     store: new RedisStore({
         port: config.redis.port,
         host: config.redis.host,
@@ -46,20 +46,26 @@ app.use(session({
     cookie: {
         secure: false
     }
-}));
+}));*/
 app.use(express.static(path.join(__dirname, 'public')));
 
 /* 일단 get으로 요청된 것들은 바로 index.html으로 보여준다. */
 app.get('/', function(req, res) {
     res.sendFile(__dirname + '/public/html/index.html');
 });
+/*
 
-/* 로그인이 필요한 부분을 체크 */
+*/
+/* 로그인이 필요한 부분을 체크 *//*
+
 app.use('/api/member', loginCheck.check);
 
-/* URL */
+*/
+/* URL *//*
+
 app.use('/api/login', login);
 app.use('/api/sign', sign);
+*/
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -79,8 +85,8 @@ app.use(function errorHandler(err, req, res, next) {
 // error handlers
 
 
-http.createServer(app).listen(config.web.port, function(){
-    console.log('Express server listening on port ' + config.web.port);
+http.createServer(app).listen(3005, function(){
+    console.log('Express server listening on port ' + 30000);
 });
 
 module.exports = app;
